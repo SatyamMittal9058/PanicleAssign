@@ -12,7 +12,7 @@ const EmployeeForm = () => {
     
     const handleSubmit= async()=>{
         try{
-            const response=await axios.put(`${URL}/api/updateOradd`,userData);
+            const response=await axios.post(`${URL}/api/updateOradd`,userData);
             alert(response.data.message);
         }catch(error){
             alert("User Not Created");
