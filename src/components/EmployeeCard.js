@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { URL } from "../backendapi";
 
 const EmployeeCard = () => {
     const [userData, setUserData] = useState([]);
     const [editUser, setEditUser] = useState({});
     const [changeUser, setChangeUser] = useState({});
     const fetchData = async () => {
-        const response = await axios.get("http://localhost:4000/api/userlist")
+        const response = await axios.get(`${URL}/api/userlist`)
         const data = response.data;
         setUserData(data.user);
 
@@ -18,7 +19,7 @@ const EmployeeCard = () => {
     const handleSave = async () => {
         if (editUser) {
             try {
-                const response = await axios.put(`http://localhost:4000/api/update/${editUser._id}`, changeUser);
+                const response = await axios.put(`${URL}/api/update/${editUser._id}`, changeUser);
                 const data=response.data;
                 setUserData(data.user);
                 alert(response.data.message);
@@ -33,7 +34,7 @@ const EmployeeCard = () => {
     const handleDelete = async (id) => {
         
         try{
-            const response=await axios.delete(`http://localhost:4000/api/delete/${id}`)
+            const response=await axios.delete(`${URL}/api/delete/${id}`)
             alert(response.data.message)
             fetchData();
         }catch(error){

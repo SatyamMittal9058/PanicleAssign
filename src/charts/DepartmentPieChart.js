@@ -1,6 +1,6 @@
 import React from 'react'
 import {Pie} from 'react-chartjs-2';
-const DepartmentPieChart = ({ charData }) => {
+const DepartmentPieChart = ({charData}) => {
     const ChartData = {
       labels: charData.label.map((curr)=>curr),
       datasets: [

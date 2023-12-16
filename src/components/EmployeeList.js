@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { URL } from "../backendapi";
 
 const EmployeeList = () => {
     const [originalData, setOriginalData] = useState([]);
@@ -16,7 +17,7 @@ const EmployeeList = () => {
     }
     const fetchdata = async () => {
         try {
-            const res = await axios.get("http://localhost:4000/api/userlist");
+            const res = await axios.get(`${URL}/api/userlist`);
             const data = res.data;
             setOriginalData(data.user);
             setUserData(data.user);

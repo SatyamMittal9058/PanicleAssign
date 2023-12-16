@@ -5,6 +5,7 @@ import { CategoryScale } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import DepartmentPieChart from "../charts/DepartmentPieChart";
 import { PieChartData } from "../charts/charFunctions";
+import { URL } from "../backendapi";
 // import DepartmentPieChart from "../charts/DepartmentPieChart";
 
 Chart.register(CategoryScale);
@@ -15,7 +16,7 @@ const Dashboard = () => {
     const [totalEmployees,setTotalEmployees]=useState();
     const fetchdata = async () => {
         try {
-            const res = await axios.get("http://localhost:4000/api/userlist");
+            const res = await axios.get(`${URL}/api/userlist`);
             const data = res.data;
             setUserData(data.user);
             // console.log(userData);

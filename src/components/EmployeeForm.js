@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { URL } from "../backendapi";
 
 const EmployeeForm = () => {
     const [userData,setUserData]=useState({
@@ -11,7 +12,7 @@ const EmployeeForm = () => {
     
     const handleSubmit= async()=>{
         try{
-            const response=await axios.put("http://localhost:4000/api/updateOradd",userData);
+            const response=await axios.put(`${URL}/api/updateOradd`,userData);
             alert(response.data.message);
         }catch(error){
             alert("User Not Created");
